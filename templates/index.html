@@ -6,9 +6,29 @@
 </head>
 <body>
 
-<h1>💰 International Student Budget - NL Edition</h1>
+<h1>💰 Student Budget NL</h1>
 
-<p>Welcome Aisha 😄</p>
+<form method="POST">
+
+    <h2>💵 Income</h2>
+    <input type="number" name="income" placeholder="Enter your monthly income" required>
+
+    <h2>💸 Expenses</h2>
+    <input type="number" name="rent" placeholder="Rent"><br>
+    <input type="number" name="groceries" placeholder="Groceries"><br>
+    <input type="number" name="transport" placeholder="OV-chipkaart"><br>
+    <input type="number" name="insurance" placeholder="Health Insurance"><br>
+
+    <br>
+    <button type="submit">Calculate</button>
+
+</form>
+
+{% if result %}
+    <h2>📊 Result</h2>
+    <p>Balance: €{{ result.balance }}</p>
+    <p>{{ result.warning }}</p>
+{% endif %}
 
 </body>
 </html>
