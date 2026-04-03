@@ -19,15 +19,67 @@
     <input type="number" name="transport" placeholder="OV-chipkaart"><br>
     <input type="number" name="insurance" placeholder="Health Insurance"><br>
 
-    <br>
+    <h3>🌍 Convert to your currency</h3>
+    <select name="currency">
+        <option value="EUR" selected>Euro (EUR)</option>
+        <option value="MYR">Malaysia (MYR)</option>
+        <option value="USD">US Dollar (USD)</option>
+        <option value="INR">India (INR)</option>
+        <option value="AED">UAE (AED)</option>
+        <option value="TRY">Turkey (TRY)</option>
+        <option value="NGN">Nigeria (NGN)</option>
+        <option value="CZK">Czech Republic (CZK)</option>
+        <option value="UAH">Ukraine (UAH)</option>
+        <option value="ANG">Netherlands Antilles (ANG)</option>
+    </select>
+
+    <br><br>
     <button type="submit">Calculate</button>
 
 </form>
 
 {% if result %}
     <h2>📊 Result</h2>
-    <p>Balance: €{{ result.balance }}</p>
-    <p>{{ result.warning }}</p>
+
+    <p><strong>Balance:</strong> €{{ result.balance }}</p>
+
+    <p>
+        💱 Amount:
+        {{ result.converted }} {{ result.currency }}
+    </p>
+
+    <p>💬 You can survive {{ result.survival_days }} days</p>
+
+    {% if result.warnings %}
+        <h3>🚨 Warnings</h3>
+        <ul style="color: red;">
+            {% for w in result.warnings %}
+                <li>{{ w }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color: green;">✅ You are managing well!</p>
+    {% endif %}
+{% endif %}
+
+<hr>
+
+<h2>📅 Monthly History</h2>
+
+{% if history %}
+<ul>
+    {% for item in history %}
+        <li>
+            <strong>{{ item.month }}</strong><br>
+            Income: €{{ item.income }}<br>
+            Expenses: €{{ item.expenses }}<br>
+            Balance: €{{ item.balance }}
+        </li>
+        <br>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No data yet 😢</p>
 {% endif %}
 
 </body>

@@ -1,0 +1,45 @@
+{
+    "users": {
+        "aisha": {
+            "password": "1991",
+            "months": {
+                "April 2026": {
+                    "income": 1500.0,
+                    "expenses": [
+                        {
+                            "date": "2026-04-01",
+                            "category": "Food",
+                            "amount": 250.0
+                        },
+                        {
+                            "date": "2026-04-01",
+                            "category": "Food",
+                            "amount": 250.0
+                        },
+                        {
+                            "date": "2026-03-25",
+                            "category": "rent",
+                            "amount": 750.0
+                        },
+                        {
+                            "date": "2026-04-02",
+                            "category": "car",
+                            "amount": 500.0
+                        },
+                        {
+                            "date": "2026-03-31",
+                            "category": "Durum",
+                            "amount": 5.0
+                        },
+                        {
+                            "date": "2026-04-01",
+                            "category": "Food",
+                            "amount": 50.0
+                        }
+                    ]
+                }
+            },
+            "currency": "AED"
+        }
+    }
+}

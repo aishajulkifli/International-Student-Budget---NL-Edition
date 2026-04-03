@@ -1,0 +1,80 @@
+/* 🌌 Dark background */
+body {
+    background-color: #0f172a;
+    color: #f1f5f9;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Center layout */
+.container {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* 🧊 Card style */
+.card {
+    background: #1e293b;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* Headings */
+h1, h2, h3 {
+    text-align: center;
+}
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: none;
+    background: #334155;
+    color: white;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0ea5e9;
+    transform: scale(1.03);
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #334155;
+    padding: 10px;
+}
+
+td {
+    background: #1e293b;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Link */
+a {
+    color: #38bdf8;
+    text-decoration: none;
+}

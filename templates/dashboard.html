@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>💰 Budget Dashboard</h1>
+    <h2>📅 {{ month }}</h2>
+
+    <!-- 💰 Summary -->
+    <div class="card">
+        <h3>💰 Income: €{{ income }}</h3>
+        <h3>💸 Balance: €{{ balance }}</h3>
+        <h3>💱 {{ converted }} {{ currency }}</h3>
+    </div>
+
+    <!-- 🌍 Currency -->
+    <div class="card">
+        <h3>🌍 Change Currency</h3>
+        <form method="POST">
+            <select name="currency">
+                <option value="EUR">Euro (EUR)</option>
+                <option value="MYR">Malaysia (MYR)</option>
+                <option value="USD">US Dollar (USD)</option>
+                <option value="INR">India (INR)</option>
+                <option value="AED">UAE (AED)</option>
+                <option value="TRY">Turkey (TRY)</option>
+                <option value="NGN">Nigeria (NGN)</option>
+                <option value="CZK">Czech Republic (CZK)</option>
+                <option value="UAH">Ukraine (UAH)</option>
+                <option value="ANG">Curaçao (ANG)</option>
+            </select>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <!-- 💵 Income -->
+    <div class="card">
+        <h3>💵 Set Monthly Income</h3>
+        <form method="POST">
+            <input name="income" type="number" placeholder="Enter income">
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <!-- ➕ Expense -->
+    <div class="card">
+        <h3>➕ Add Expense</h3>
+        <form method="POST">
+            <input name="date" type="date" required>
+            <input name="category" placeholder="Category" required>
+            <input name="amount" type="number" placeholder="Amount" required>
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <!-- 📊 Table -->
+    <div class="card">
+        <h3>📊 Daily Expenses</h3>
+
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Amount (€)</th>
+            </tr>
+
+            {% for e in expenses %}
+            <tr>
+                <td>{{ e.date }}</td>
+                <td>{{ e.category }}</td>
+                <td>{{ e.amount }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <br>
+    <a href="/logout">Logout</a>
+
+</div>
+
+</body>
+</html>
