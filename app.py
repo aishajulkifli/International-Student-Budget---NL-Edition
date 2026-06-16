@@ -77,10 +77,10 @@ def predict_survival_days(balance, expenses):
 
     prediction = model.predict([[avg_spending]])
 
-    return max(0, round(prediction[0]))
+    return max(0, round(prediction[0]))         # Ensure we don't return negative days!
 
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])    # Login and Registration!
 def login():
     data = load_data()
 

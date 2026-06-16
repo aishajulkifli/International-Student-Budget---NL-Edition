@@ -50,6 +50,73 @@
                             "date": "2026-06-01",
                             "category": "Food",
                             "amount": 50.0
+                        },
+                        {
+                            "date": "2026-06-03",
+                            "category": "Durum",
+                            "amount": 8.0
+                        },
+                        {
+                            "date": "2026-06-13",
+                            "category": "Insurance",
+                            "amount": 350.0
+                        }
+                    ]
+                }
+            },
+            "currency": "MYR"
+        },
+        "demo": {
+            "password": "1234",
+            "months": {
+                "June 2026": {
+                    "income": 1500.0,
+                    "expenses": [
+                        {
+                            "date": "2026-06-15",
+                            "category": "rent",
+                            "amount": 750.0
+                        },
+                        {
+                            "date": "2026-06-17",
+                            "category": "Transport",
+                            "amount": 20.0
+                        },
+                        {
+                            "date": "2026-06-05",
+                            "category": "Insurance",
+                            "amount": 250.0
+                        },
+                        {
+                            "date": "2026-06-16",
+                            "category": "rent",
+                            "amount": 750.0
+                        }
+                    ]
+                }
+            },
+            "currency": "MYR"
+        },
+        "buddy": {
+            "password": "1234",
+            "months": {
+                "June 2026": {
+                    "income": 1500.0,
+                    "expenses": [
+                        {
+                            "date": "2026-06-15",
+                            "category": "rent",
+                            "amount": 750.0
+                        },
+                        {
+                            "date": "2026-06-05",
+                            "category": "Insurance",
+                            "amount": 350.0
+                        },
+                        {
+                            "date": "2026-06-16",
+                            "category": "Durum",
+                            "amount": 5.0
                         }
                     ]
                 }
