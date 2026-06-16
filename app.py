@@ -19,7 +19,7 @@ rates = {
     "CZK": 25,
     "UAH": 42,
     "ANG": 1.95
-}
+
 
 def load_data():
     try:
