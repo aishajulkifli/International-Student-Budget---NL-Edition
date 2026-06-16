@@ -1,3 +1,6 @@
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
 from flask import Flask, render_template, request, redirect, session
 import json
 from datetime import datetime
@@ -19,7 +22,7 @@ rates = {
     "CZK": 25,
     "UAH": 42,
     "ANG": 1.95
-
+}
 
 def load_data():
     try:
@@ -31,6 +34,50 @@ def load_data():
 def save_data(data):
     with open(DATA_FILE, "w") as f:
         json.dump(data, f, indent=4)
+
+def predict_survival_days(balance, expenses):
+    """
+    Predict how many days the remaining balance can last
+    using Linear Regression.
+    """
+
+    if len(expenses) < 2:
+        return None
+
+    daily_totals = {}
+
+    for expense in expenses:
+        date = expense["date"]
+        amount = expense["amount"]
+
+        if date not in daily_totals:
+            daily_totals[date] = 0
+
+        daily_totals[date] += amount
+
+    daily_spending = list(daily_totals.values())
+
+    if len(daily_spending) < 2:
+        return None
+
+    X = np.array(daily_spending).reshape(-1, 1)
+
+    y = []
+
+    for spend in daily_spending:
+        if spend > 0:
+            y.append(balance / spend)
+        else:
+            y.append(0)
+
+    model = LinearRegression()
+    model.fit(X, y)
+
+    avg_spending = np.mean(daily_spending)
+
+    prediction = model.predict([[avg_spending]])
+
+    return max(0, round(prediction[0]))
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -101,10 +148,52 @@ def dashboard():
 
         save_data(data)
 
-    total_spent = sum(e["amount"] for e in month_data["expenses"])
+    # Calculate totals
+    total_spent = sum(
+        e["amount"] for e in month_data["expenses"]
+    )
+
     balance = month_data["income"] - total_spent
 
-    converted = round(balance * rates.get(currency, 1), 2)
+    converted = round(
+        balance * rates.get(currency, 1),
+        2
+    )
+
+    # 🤖 AI Survival Predictor
+    survival_prediction = predict_survival_days(
+        balance,
+        month_data["expenses"]
+    )
+
+    # 🤖 AI Budget Coach
+    advice = "Keep tracking your spending!"
+
+    food_total = 0
+
+    for expense in month_data["expenses"]:
+        category = expense["category"].lower()
+
+        if category == "food":
+            food_total += expense["amount"]
+
+    if month_data["income"] > 0:
+
+        food_percentage = (
+            food_total / month_data["income"]
+        ) * 100
+
+        if food_percentage > 30:
+            advice = (
+                "You spend a large portion of your income on food. "
+                "Consider meal planning to save money."
+            )
+
+        elif balance < 100:
+            advice = (
+                "Your balance is running low. "
+                "Try reducing non-essential expenses."
+            )
 
     return render_template(
         "dashboard.html",
@@ -113,7 +202,9 @@ def dashboard():
         expenses=month_data["expenses"],
         balance=balance,
         converted=converted,
-        currency=currency
+        currency=currency,
+        survival_prediction=survival_prediction,
+        advice=advice
     )
 
 

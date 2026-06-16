@@ -18,9 +18,30 @@
         <h3>💱 {{ converted }} {{ currency }}</h3>
     </div>
 
+    <!-- 🤖 AI Survival Predictor -->
+    {% if survival_prediction %}
+    <div class="card">
+        <h3>🤖 AI Survival Predictor</h3>
+
+        <p>
+            Your remaining budget is expected to last approximately
+            <strong>{{ survival_prediction }}</strong>
+            days.
+        </p>
+    </div>
+    {% endif %}
+
+    <!-- 🤖 AI Budget Coach -->
+    <div class="card">
+        <h3>🤖 AI Budget Coach</h3>
+
+        <p>{{ advice }}</p>
+    </div>
+
     <!-- 🌍 Currency -->
     <div class="card">
         <h3>🌍 Change Currency</h3>
+
         <form method="POST">
             <select name="currency">
                 <option value="EUR">Euro (EUR)</option>
@@ -34,6 +55,7 @@
                 <option value="UAH">Ukraine (UAH)</option>
                 <option value="ANG">Curaçao (ANG)</option>
             </select>
+
             <button type="submit">Save</button>
         </form>
     </div>
@@ -41,8 +63,14 @@
     <!-- 💵 Income -->
     <div class="card">
         <h3>💵 Set Monthly Income</h3>
+
         <form method="POST">
-            <input name="income" type="number" placeholder="Enter income">
+            <input
+                name="income"
+                type="number"
+                placeholder="Enter income"
+            >
+
             <button type="submit">Save</button>
         </form>
     </div>
@@ -50,10 +78,23 @@
     <!-- ➕ Expense -->
     <div class="card">
         <h3>➕ Add Expense</h3>
+
         <form method="POST">
             <input name="date" type="date" required>
-            <input name="category" placeholder="Category" required>
-            <input name="amount" type="number" placeholder="Amount" required>
+
+            <input
+                name="category"
+                placeholder="Category"
+                required
+            >
+
+            <input
+                name="amount"
+                type="number"
+                placeholder="Amount"
+                required
+            >
+
             <button type="submit">Add</button>
         </form>
     </div>
@@ -80,6 +121,7 @@
     </div>
 
     <br>
+
     <a href="/logout">Logout</a>
 
 </div>

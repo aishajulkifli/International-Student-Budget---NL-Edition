@@ -37,9 +37,24 @@
                             "amount": 50.0
                         }
                     ]
+                },
+                "June 2026": {
+                    "income": 1500.0,
+                    "expenses": [
+                        {
+                            "date": "2026-06-15",
+                            "category": "rent",
+                            "amount": 750.0
+                        },
+                        {
+                            "date": "2026-06-01",
+                            "category": "Food",
+                            "amount": 50.0
+                        }
+                    ]
                 }
             },
-            "currency": "AED"
+            "currency": "MYR"
         }
     }
 }
