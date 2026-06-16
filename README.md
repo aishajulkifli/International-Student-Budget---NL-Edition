@@ -2,6 +2,8 @@
 
 A comprehensive budget planning guide for international students studying in the Netherlands.
 
+Link to the webapp: https://international-student-budget-nl-edition.onrender.com/
+
 ## Overview
 
 This project provides practical budgeting resources and tools for international students to manage their finances while studying in the Netherlands.
